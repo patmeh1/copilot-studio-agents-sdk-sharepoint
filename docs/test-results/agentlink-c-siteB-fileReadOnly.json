@@ -1,0 +1,11 @@
+{
+ "persona": "c",
+ "site": "B",
+ "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteB/SitePages/Agent-Link-Test.aspx",
+ "page": "OK",
+ "card_rendered": true,
+ "greeting": "Hello Agents SDK User C! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+ "errors": [],
+ "reply": "Agent A (standard harness): Put the meeting’s decision or outcome in the invite and spend the first minute confirming it. When everyone knows the goal, discussions stay focused and the meeting is more likely to end on time.",
+ "verdict": "WORKS"
+}

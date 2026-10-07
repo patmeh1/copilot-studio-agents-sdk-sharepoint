@@ -1,0 +1,11 @@
+{
+ "persona": "a",
+ "site": "B",
+ "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteB/SitePages/Agent-Link-Test.aspx",
+ "page": "OK",
+ "card_rendered": true,
+ "greeting": "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+ "errors": [],
+ "reply": "Agent A (standard harness): Before the meeting, send a clear agenda with the specific decisions that need to be made, and assign a time limit to each topic. This helps keep discussion focused and reduces time spent on tangents.",
+ "verdict": "WORKS"
+}

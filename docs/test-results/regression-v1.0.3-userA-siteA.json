@@ -1,0 +1,39 @@
+{
+ "persona": "a",
+ "started": "2026-10-07 07:58:06",
+ "sites": {
+  "A": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+    ],
+    "reply": [
+     "Agent A (standard harness): Start every meeting with a clear agenda and assign a time limit to each topic. If a discussion goes off track, capture it as a follow-up item and move on to keep the meeting on schedule."
+    ],
+    "banner": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.usera@M365CPI03719864.onmicrosoft.com",
+    "verdict": "WORKS"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.usera@M365CPI03719864.onmicrosoft.com",
+    "verdict": "NOT SUPPORTED"
+   },
+   "agentB_embed": {
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 7:58 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "reply": "n Seattle today? Sent at October 7 at 7:58 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the current weather for Seattle, Washington (as of Wednesday, October 7, 2026): 🌤 Current Conditions: Temperature: 58°F (14°C) Feels Like: 57°F (13.5°C) Sky: Partly cloudy Humidity: 78% Wind: 6 mph (10 km/h) from the south 🗓 5-Day Forecast Day Conditions High / Low °F (°C) Wed (Today) Partly cloudy 63°F / 50°F (17°C / 10°C) Thu Light rain 60°F / 49°F (16°C / 9°C) Fri Showers 58°F / 47°F (14°C / 8°C) Sat Rain likely 57°F / 46°F (14°C / 8°C) Sun Mostly cloudy 59°F / 47°F (15°C /",
+    "verdict": "ANSWERS (no auth enforced)"
+   }
+  }
+ }
+}

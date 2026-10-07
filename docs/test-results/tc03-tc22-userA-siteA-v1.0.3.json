@@ -1,0 +1,46 @@
+{
+ "persona": "a",
+ "site": "A",
+ "started": "2026-10-07 07:57:02",
+ "access": "ok",
+ "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/SitePages/Agents-SDK-Test.aspx",
+ "tc03_interactive_fallback": {
+  "bundle": [
+   "copilot-studio-agent-web-part_aa2f285bb75385d2915e.js"
+  ],
+  "msal_cache_entries_removed": 17,
+  "prompt_shown": true,
+  "prompt": "Agent A - Standard harness Sign in to chat with this agent Single sign-on could not complete silently (for example because third-party cookies are blocked or consent is pending). Sign in with Microsoft Microsoft 365 Agents SDK · Microsoft Entra ID SSO",
+  "popup_host": "about:blank",
+  "popup_steps": [
+   "closed"
+  ],
+  "status": "chat",
+  "greeting": [
+   "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+  ],
+  "reply": [
+   "Agent A (standard harness): Set a clear agenda with desired outcomes and assign time limits to each topic before the meeting starts. End each discussion once a decision or next action is agreed, and move unresolved items to a follow-up session instead of extending the meeting."
+  ],
+  "seconds_to_answer": 20.5,
+  "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.usera@M365CPI03719864.onmicrosoft.com",
+  "other_web_part": {
+   "still_prompting": false,
+   "first_message": "This action doesn't support agents built with the GitHub Copilot harness. Learn more",
+   "verdict": "PASS"
+  },
+  "verdict": "PASS"
+ },
+ "tc22_new_chat": {
+  "question_in_transcript_before": true,
+  "transcript_cleared": true,
+  "greeting_after": [
+   "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+  ],
+  "reply_after": [
+   "Agent A (standard harness): Schedule meetings for 25 or 50 minutes instead of 30 or 60 minutes, and put the key decision or outcome in the invite. The shorter time box encourages focus and leaves buffer time between meetings."
+  ],
+  "verdict": "PASS"
+ },
+ "console": []
+}

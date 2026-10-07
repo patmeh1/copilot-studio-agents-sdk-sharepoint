@@ -1,0 +1,44 @@
+{
+ "persona": "c",
+ "started": "2026-10-07 00:54:09",
+ "sites": {
+  "B": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteB/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "Hello Agents SDK User C! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+    ],
+    "reply": [
+     "Agent A (standard harness): Put the desired outcome and decision points at the top of the meeting invite, then end the meeting as soon as those are covered. A clear agenda helps keep discussion focused and often cuts unnecessary time."
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userc@M365CPI03719864.onmicrosoft.com",
+    "verdict": "WORKS"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userc@M365CPI03719864.onmicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:54 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:54 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the weather for Seattle, WA today (Wednesday, October 7, 2026): Temperature: Around 61°F (16°C) during the day, dipping to 49°F (9°C) tonight. Conditions: Mostly cloudy with occasional light rain showers throughout the day. Wind: Gentle breeze from the southwest at about 8–12 mph (13–19 km/h). Humidity: Roughly 75%, so it’ll feel slightly damp. 5-Day Outlook for Seattle: Thu (Oct 8): High 63°F / Low 48°F – partly cloudy, mild. Fri (Oct 9): High 58°F / Low 46°F – showers likel",
+    "verdict": "WORKS"
+   }
+  }
+ },
+ "console": []
+}

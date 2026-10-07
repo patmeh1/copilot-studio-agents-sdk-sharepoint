@@ -1,0 +1,44 @@
+{
+ "persona": "b",
+ "started": "2026-10-07 00:22:49",
+ "sites": {
+  "A": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "Hello Agents SDK User B! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+    ],
+    "reply": [
+     "Agent A (standard harness): Put the meeting goal and desired decision in the invite, then end the meeting as soon as that outcome is reached instead of using the full time slot. This keeps discussion focused and often shortens meetings significantly."
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userb@M365CPI03719864.onmicrosoft.com",
+    "verdict": "WORKS"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userb@M365CPI03719864.onmicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:22 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:23 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s today’s weather for Seattle, Washington (Wednesday, October 7, 2026): Current Temperature: around 58°F (14°C) Conditions: mostly cloudy with light rain possible early morning High/Low: about 64°F / 51°F (18°C / 11°C) Humidity: roughly 80% Winds: southwest at 8–12 mph 5-Day Outlook: Thu (Oct 8): Showers, high near 62°F (17°C), low 50°F (10°C) Fri (Oct 9): Cloudy, a few breaks of sun, high 63°F (17°C), low 49°F (9°C) Sat (Oct 10): Mostly sunny, high 66°F (19°C), low 50°F (10°C)",
+    "verdict": "WORKS"
+   }
+  }
+ },
+ "console": []
+}

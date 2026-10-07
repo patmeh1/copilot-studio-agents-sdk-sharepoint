@@ -1,0 +1,45 @@
+{
+ "persona": "b",
+ "started": "2026-10-07 00:21:31",
+ "sites": {
+  "A": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "You don't have access to talk to this bot, contact the owner."
+    ],
+    "reply": [
+     "You don't have access to talk to this bot, contact the owner.",
+     ""
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userb@M365CPI03719864.onmicrosoft.com",
+    "verdict": "UNCLEAR"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userb@M365CPI03719864.onmicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:21 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:21 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the current weather in Seattle, WA for Wednesday, October 7, 2026 (local time): 🌡 Temperature: 55°F (13°C) 🌥 Conditions: Mostly cloudy with light rain showers possible in the afternoon 💧 Humidity: Around 80% 🌬 Winds: Southwest at 8–12 mph 5‑Day Outlook: Day Conditions High / Low Notes Wed (today) Mostly cloudy, light rain 60°F / 50°F (16°C / 10°C) Occasional drizzle Thu Partly cloudy 62°F / 48°F (17°C / 9°C) Dry day between showers Fri Rain likely 58°F / 47°F (14°C / 8°C) Mod",
+    "verdict": "WORKS"
+   }
+  }
+ },
+ "console": []
+}

@@ -1,0 +1,118 @@
+{
+ "persona": "mario",
+ "started": "2026-10-07 00:09:00",
+ "sites": {
+  "A": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "Hello Mario Rogers! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+    ],
+    "reply": [
+     "Agent A (standard harness): Set a clear agenda with desired outcomes and share it before the meeting. If each agenda item has a time limit and an owner, discussions are more likely to stay focused and end on time."
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · MarioR@M365CPI03719864.OnMicrosoft.com",
+    "verdict": "WORKS"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · MarioR@M365CPI03719864.OnMicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:09 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:09 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the weather in Seattle, WA for Wednesday, October 7, 2026: Current temperature: 54°F (12°C) High: 61°F (16°C) Low: 49°F (9°C) Conditions: Mostly cloudy with light drizzle in the morning, clearing by afternoon. Humidity: ~78% Wind: From the southwest at 7–10 mph 5-Day Outlook for Seattle: Thu Oct 8: 59°F / 48°F — Cloudy, chance of showers (30%) Fri Oct 9: 63°F / 50°F — Partly sunny Sat Oct 10: 65°F / 52°F — Mostly sunny Sun Oct 11: 60°F / 49°F — Light rain returning Mon Oct 12",
+    "verdict": "WORKS"
+   }
+  },
+  "B": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteB/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "Hello Mario Rogers! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+    ],
+    "reply": [
+     "Agent A (standard harness): Start every meeting with a clear agenda that lists the decisions that need to be made, and assign a time limit to each topic. This keeps discussion focused and makes it easier to end on time."
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · MarioR@M365CPI03719864.OnMicrosoft.com",
+    "verdict": "WORKS"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · MarioR@M365CPI03719864.OnMicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:09 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:10 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the weather for Seattle, WA today (Wednesday, October 7, 2026): Current conditions: Mostly cloudy Temperature: Around 58 °F (14 °C) High/Low: 63 °F / 51 °F (17 °C / 10 °C) Humidity: ~75 % Winds: Light southwest winds at 6–8 mph Precipitation: Slight chance of light rain early morning; otherwise dry 5‑day outlook: Day Forecast High / Low Notes Thu (Oct 8) Showers likely 60 / 49 °F (16 / 9 °C) Light rain through afternoon Fri (Oct 9) Mostly cloudy 62 / 48 °F (17 / 9 °C) Breezy ",
+    "verdict": "WORKS"
+   }
+  },
+  "C": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteC/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "Hello Mario Rogers! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+    ],
+    "reply": [
+     "Agent A (standard harness): Start every meeting with a clear agenda that lists the decisions that need to be made, and assign a time limit to each topic. This keeps discussion focused and makes it easier to end on time."
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · MarioR@M365CPI03719864.OnMicrosoft.com",
+    "verdict": "WORKS"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · MarioR@M365CPI03719864.OnMicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:10 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:10 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the forecast for Seattle, WA (Wednesday, October 7, 2026): 🌡️ Current weather: Temperature: 56°F (13°C) Conditions: Mostly cloudy Wind: 7 mph from the southwest Humidity: 80% 🗓️ 5-day outlook: Day High / Low Conditions Wed (Oct 7) 60°F / 51°F (16°C / 10°C) Cloudy with off-and-on light rain Thu (Oct 8) 61°F / 49°F (16°C / 9°C) Showers tapering in the afternoon Fri (Oct 9) 63°F / 50°F (17°C / 10°C) Partly cloudy Sat (Oct 10) 65°F / 52°F (18°C / 11°C) Mostly sunny Sun (Oct 11) 6",
+    "verdict": "WORKS"
+   }
+  }
+ },
+ "console": []
+}

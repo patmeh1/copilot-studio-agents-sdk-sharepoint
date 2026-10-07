@@ -1,0 +1,87 @@
+{
+ "persona": "c",
+ "started": "2026-10-07 00:04:21",
+ "sites": {
+  "A": {
+   "access": "denied",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fm365cpi03719864.sharepoint.com%2Fsites%2FAgentsSDK-SiteA%2FSitePages%2FAgents-SDK-Test.aspx&correlation=c86e42a2-c0fb-2000-346c-9a1c84724da4&Type=item&name=6c665c09-ec66-4be1-9092-186bd4488254&listItemId=2&listItemUniqueId=dcf6e730-644a-4ec5-b0fa-45d897e747bb&allowautoredirecttosource=true"
+  },
+  "B": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteB/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "You don't have access to talk to this bot, contact the owner."
+    ],
+    "reply": [
+     "You don't have access to talk to this bot, contact the owner.",
+     ""
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userc@M365CPI03719864.onmicrosoft.com",
+    "verdict": "UNCLEAR"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userc@M365CPI03719864.onmicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:04 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:05 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s the weather in Seattle, WA for Wednesday, October 7, 2026: 🌡️ Current temperature: around 57°F (14°C) 🌥️ Conditions: Mostly cloudy 💧 Humidity: roughly 78% 🌬️ Wind: about 6 mph (10 km/h) from the southwest ☔ Chance of rain: 40% — light showers possible in the afternoon, so keep that umbrella handy. 5-day outlook for Seattle: Day Forecast High / Low Notes Wed (10/7) Mostly cloudy with light rain 59°F / 49°F (15°C / 9°C) Some afternoon drizzle Thu (10/8) Light rain early, cleari",
+    "verdict": "WORKS"
+   }
+  },
+  "C": {
+   "access": "ok",
+   "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteC/SitePages/Agents-SDK-Test.aspx",
+   "agentA_sdk": {
+    "status": "chat",
+    "greeting": [
+     "You don't have access to talk to this bot, contact the owner."
+    ],
+    "reply": [
+     "You don't have access to talk to this bot, contact the owner.",
+     ""
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userc@M365CPI03719864.onmicrosoft.com",
+    "verdict": "UNCLEAR"
+   },
+   "agentB_sdk": {
+    "status": "chat",
+    "greeting": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "reply": [
+     "This action doesn't support agents built with the GitHub Copilot harness. Learn more"
+    ],
+    "banner": "",
+    "connectivity": "",
+    "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.userc@M365CPI03719864.onmicrosoft.com",
+    "verdict": "NOT SUPPORTED (GitHub Copilot harness)"
+   },
+   "agentB_embed": {
+    "frame_url": "(removed - the hosted web chat URL opens the agent without sign-in)",
+    "initial": "Weather agent Bot said: Hello ! Let's talk about the weather today. Like Dislike Sent at October 7 at 12:05 AM Just now Bot said: Hello ! Let's talk about the weather today. Message is interactive. Click to interact. Connectivity Status: Connected",
+    "popups": [],
+    "reply": "n Seattle today? Sent at October 7 at 12:05 AM Just now You said: What's the weather in Seattle today? Bot said: Here’s today’s weather in Seattle (Wednesday, October 7, 2026): 🌡️ Current temperature: about 58°F (14°C) 🌥️ Conditions: mostly cloudy with light showers in the afternoon 💨 Winds: southwest at 8–12 mph (13–19 km/h) 💧 Humidity: around 80% 🌦️ Chance of rain: roughly 40% 5‑Day Outlook (Seattle, WA): Day Conditions High / Low Chance of Rain Wed (today) Mostly cloudy, scattered showers 63°F / 52°F (17°C / 11°C) 40% Thu Partly sunny 65°F / 50°F (18°C / 10°C) 20% Fri Cloudy, light rain lat",
+    "verdict": "WORKS"
+   }
+  }
+ },
+ "console": []
+}

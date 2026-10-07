@@ -1,0 +1,138 @@
+{
+ "a": {
+  "A": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Set a clear agenda with time limits for each topic and share it before the meeting. This helps participants stay focused and makes i",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.usera@M365CPI03719864.onmicrosoft.com"
+  },
+  "B": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Set a clear agenda with time limits for each topic and share it before the meeting. This helps participants stay focused and makes i",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.usera@M365CPI03719864.onmicrosoft.com"
+  },
+  "C": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Start every meeting with a clear agenda and identify the specific decision or outcome needed by the end. If a topic doesn’t support ",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.usera@M365CPI03719864.onmicrosoft.com"
+  }
+ },
+ "b": {
+  "A": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Agents SDK User B! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Start every meeting with a clear agenda and assign a time limit to each topic before discussion begins. This helps keep conversation",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.userb@M365CPI03719864.onmicrosoft.com"
+  },
+  "B": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Agents SDK User B! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Start every meeting with a clear agenda and assign a time limit to each topic before discussion begins. This helps keep conversation",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.userb@M365CPI03719864.onmicrosoft.com"
+  },
+  "C": {
+   "site": "ACCESS DENIED",
+   "A_sdk": "-",
+   "B_sdk": "-",
+   "B_embed": "-"
+  }
+ },
+ "c": {
+  "A": {
+   "site": "ACCESS DENIED",
+   "A_sdk": "-",
+   "B_sdk": "-",
+   "B_embed": "-"
+  },
+  "B": {
+   "site": "OK",
+   "A_sdk": "BLOCKED - not shared",
+   "A_greeting": "You don't have access to talk to this bot, contact the owner.",
+   "A_reply": "",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.userc@M365CPI03719864.onmicrosoft.com"
+  },
+  "C": {
+   "site": "OK",
+   "A_sdk": "BLOCKED - not shared",
+   "A_greeting": "You don't have access to talk to this bot, contact the owner.",
+   "A_reply": "",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.userc@M365CPI03719864.onmicrosoft.com"
+  }
+ },
+ "d": {
+  "A": {
+   "site": "OK",
+   "A_sdk": "BLOCKED - not shared",
+   "A_greeting": "You don't have access to talk to this bot, contact the owner.",
+   "A_reply": "",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.userd@M365CPI03719864.onmicrosoft.com"
+  },
+  "B": {
+   "site": "ACCESS DENIED",
+   "A_sdk": "-",
+   "B_sdk": "-",
+   "B_embed": "-"
+  },
+  "C": {
+   "site": "OK",
+   "A_sdk": "BLOCKED - not shared",
+   "A_greeting": "You don't have access to talk to this bot, contact the owner.",
+   "A_reply": "",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "agentsdk.userd@M365CPI03719864.onmicrosoft.com"
+  }
+ },
+ "mario": {
+  "A": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Mario Rogers! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Set a clear agenda with desired outcomes and share it before the meeting. If each agenda item has a time limit and an owner, discuss",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "MarioR@M365CPI03719864.OnMicrosoft.com"
+  },
+  "B": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Mario Rogers! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Start every meeting with a clear agenda that lists the decisions that need to be made, and assign a time limit to each topic. This k",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "MarioR@M365CPI03719864.OnMicrosoft.com"
+  },
+  "C": {
+   "site": "OK",
+   "A_sdk": "WORKS",
+   "A_greeting": "Hello Mario Rogers! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?",
+   "A_reply": "Agent A (standard harness): Start every meeting with a clear agenda that lists the decisions that need to be made, and assign a time limit to each topic. This k",
+   "B_sdk": "NOT SUPPORTED",
+   "B_embed": "ANSWERS (no auth enforced)",
+   "signed_in_as": "MarioR@M365CPI03719864.OnMicrosoft.com"
+  }
+ }
+}

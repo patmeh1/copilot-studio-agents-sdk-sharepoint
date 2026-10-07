@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "spfx-copilot-agent",
+    "environment": "spo",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "CopilotStudioAgent",
+    "componentDescription": "Chat with a Copilot Studio agent through the Microsoft 365 Agents SDK with Microsoft Entra ID SSO",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.23.3",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "spfx-copilot-agent",
+    "libraryId": "f2ff294f-6d26-4fbe-b24e-f2c550a26297",
+    "solutionShortDescription": "spfx-copilot-agent description",
+    "isDomainIsolated": false
+  }
+}

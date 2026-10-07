@@ -1,0 +1,26 @@
+# Build output and dependencies
+node_modules/
+**/lib/
+**/temp/
+**/release/
+**/dist/
+**/sharepoint/solution/
+*.sppkg
+.heft/
+
+# Python
+__pycache__/
+*.pyc
+
+# Test harness output and secrets (never commit test-user passwords or TOTP seeds)
+tests/agents-sdk-matrix/output/
+test-users*.json
+
+# Filled-in variables (keep variables.sample.ps1 only)
+scripts/variables.ps1
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vs/

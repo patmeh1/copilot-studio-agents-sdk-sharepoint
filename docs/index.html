@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Copilot Studio agents on SharePoint with the Microsoft 365 Agents SDK</title><script>(() => {const param = new URLSearchParams(window.location.search).get("scoutTheme");const theme = param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");document.documentElement.setAttribute("data-theme", theme);})();</script><style>
+:root{color-scheme:light;--cp-bg:#f7f4ef;--cp-bg-elevated:#fcfbf8;--cp-surface:#ffffff;--cp-surface-soft:#f5f5f5;--cp-border:#dedede;--cp-border-strong:#919191;--cp-text:#242424;--cp-text-muted:#5c5c5c;--cp-text-soft:#6f6f6f;--cp-accent:#b11f4b;--cp-accent-hover:#9a1a41;--cp-accent-soft:rgba(177,31,75,0.08);--cp-accent-fg:#ffffff;--cp-success:#16a34a;--cp-danger:#dc2626;--cp-warning:#f59e0b;--cp-link:#0078d4;--cp-shadow:0 18px 48px rgba(0,0,0,0.12);--cp-overlay:rgba(255,255,255,0.8);--cp-panel:rgba(255,255,255,0.86);--cp-panel-strong:rgba(255,255,255,0.96);--cp-sheen:rgba(255,255,255,0.55);--cp-highlight:rgba(177,31,75,0.12);}
+html[data-theme="dark"]{color-scheme:dark;--cp-bg:#3d3b3a;--cp-bg-elevated:#343231;--cp-surface:#292929;--cp-surface-soft:#2e2e2e;--cp-border:#474747;--cp-border-strong:#5f5f5f;--cp-text:#dedede;--cp-text-muted:#919191;--cp-text-soft:#b0b0b0;--cp-accent:#fd8ea1;--cp-accent-hover:#fb7b91;--cp-accent-soft:rgba(253,142,161,0.14);--cp-accent-fg:#1a1a1a;--cp-success:#4ade80;--cp-danger:#f87171;--cp-warning:#fbbf24;--cp-link:#4da6ff;--cp-shadow:0 18px 48px rgba(0,0,0,0.32);--cp-overlay:rgba(41,41,41,0.88);--cp-panel:rgba(41,41,41,0.72);--cp-panel-strong:rgba(41,41,41,0.96);--cp-sheen:rgba(255,255,255,0.04);--cp-highlight:rgba(253,142,161,0.12);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cp-bg);color:var(--cp-text);font-family:"Segoe UI",Aptos,Calibri,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.55;font-size:15px}
+a{color:var(--cp-link)}
+code,pre{font-family:Consolas,"Courier New",Courier,monospace}
+code{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:6px;padding:1px 5px;font-size:.9em}
+pre{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:.625rem;padding:12px 14px;overflow:auto;font-size:13px;margin:12px 0;white-space:pre-wrap;word-break:break-all}
+header.top{position:sticky;top:0;z-index:20;background:var(--cp-panel-strong);border-bottom:1px solid var(--cp-border);backdrop-filter:blur(6px)}
+.topin{max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:16px}
+.brand{font-weight:700;white-space:nowrap}
+nav.sections{display:flex;gap:4px;overflow-x:auto;flex:1}
+nav.sections button{background:none;border:0;color:var(--cp-text-muted);font:inherit;font-size:13px;padding:6px 10px;border-radius:.625rem;cursor:pointer;white-space:nowrap}
+nav.sections button:hover{background:var(--cp-accent-soft);color:var(--cp-text)}
+.iconbtn{border:1px solid var(--cp-border);background:var(--cp-surface);color:var(--cp-text);border-radius:.625rem;padding:6px 10px;cursor:pointer;font:inherit;font-size:13px}
+main{max-width:1200px;margin:0 auto;padding:8px 24px 64px}
+section{padding:36px 0 8px;scroll-margin-top:64px}
+h1{font-size:34px;line-height:1.2;margin:28px 0 8px}
+h2{font-size:24px;margin:0 0 6px}
+h3{font-size:17px;margin:0 0 6px}
+.lead{color:var(--cp-text-muted);font-size:17px;max-width:900px}
+.eyebrow{color:var(--cp-accent);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+.sub{color:var(--cp-text-muted);margin:0 0 18px}
+.card{min-width:0;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;padding:18px 20px;box-shadow:0 0 2px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.14)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.kpi .n{font-size:30px;font-weight:700;color:var(--cp-accent)}.kpi .l{color:var(--cp-text-muted);font-size:13px}
+.verdict{display:flex;gap:10px;align-items:flex-start}
+.verdict .dot{width:12px;height:12px;border-radius:50%;margin-top:6px;flex:none}
+.dot.ok{background:var(--cp-success)}.dot.bad{background:var(--cp-danger)}.dot.warn{background:var(--cp-warning)}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.pill.ok{background:color-mix(in srgb,var(--cp-success) 14%,transparent);color:var(--cp-text);border-color:color-mix(in srgb,var(--cp-success) 50%,transparent)}
+.pill.bad{background:color-mix(in srgb,var(--cp-danger) 14%,transparent);color:var(--cp-text);border-color:color-mix(in srgb,var(--cp-danger) 50%,transparent)}
+.pill.warn{background:color-mix(in srgb,var(--cp-warning) 18%,transparent);color:var(--cp-text);border-color:color-mix(in srgb,var(--cp-warning) 55%,transparent)}
+.pill.muted{background:var(--cp-surface-soft);color:var(--cp-text-muted);border-color:var(--cp-border)}
+ol.steps{margin:0;padding-left:20px}ol.steps li{margin:4px 0}
+ul.checks{list-style:none;margin:0;padding:0}ul.checks li{padding:5px 0 5px 26px;position:relative}
+ul.checks li:before{content:"\2714";position:absolute;left:4px;color:var(--cp-success);font-weight:700}
+.quote{border-left:4px solid var(--cp-accent);background:var(--cp-accent-soft);border-radius:0 .625rem .625rem 0;padding:12px 16px;margin-top:12px}
+table{width:100%;border-collapse:collapse;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;overflow:hidden;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--cp-border);vertical-align:top}
+th{background:var(--cp-surface-soft);font-weight:600;color:var(--cp-text)}
+tr:last-child td{border-bottom:0}
+.tablewrap{overflow-x:auto;border-radius:16px}
+.diagram{width:100%;height:auto;background:var(--cp-bg-elevated);border:1px solid var(--cp-border);border-radius:16px}
+.diagram .t1{font-size:15px;font-weight:600;fill:var(--cp-text)}.diagram .t2{font-size:12px;fill:var(--cp-text-muted)}
+.diagram .t3{font-size:12px;fill:var(--cp-text-muted)}.diagram .danger{fill:var(--cp-danger)}.diagram .success{fill:var(--cp-success)}
+figure.shot{margin:0;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+figure.shot img{width:100%;display:block;cursor:zoom-in;background:var(--cp-surface-soft)}
+figure.shot figcaption{font-size:12.5px;color:var(--cp-text-muted);padding:8px 12px;border-top:1px solid var(--cp-border)}
+.step{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;margin:0 0 18px}
+.stepn{width:40px;height:40px;border-radius:50%;background:var(--cp-accent);color:var(--cp-accent-fg);display:flex;align-items:center;justify-content:center;font-weight:700}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:12px}
+.concern{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.sev{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:6px;border:1px solid var(--cp-border)}
+.sev.high{color:var(--cp-danger);border-color:var(--cp-danger)}.sev.medium{color:var(--cp-warning);border-color:var(--cp-warning)}.sev.low{color:var(--cp-text-muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.filters button{border:1px solid var(--cp-border);background:var(--cp-surface);color:var(--cp-text);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:13px}
+.filters button.on{background:var(--cp-accent);border-color:var(--cp-accent);color:var(--cp-accent-fg)}
+.callout{border:1px solid var(--cp-border);border-left:4px solid var(--cp-warning);background:var(--cp-surface);border-radius:.625rem;padding:12px 16px;margin:12px 0}
+.callout.danger{border-left-color:var(--cp-danger)}.callout.ok{border-left-color:var(--cp-success)}
+#lightbox{position:fixed;inset:0;background:var(--cp-overlay);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
+#lightbox.show{display:flex}
+#lightbox figure{margin:0;max-width:96vw;max-height:92vh;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;overflow:hidden;box-shadow:var(--cp-shadow)}
+#lightbox img{max-width:96vw;max-height:84vh;display:block}
+#lightbox figcaption{padding:8px 14px;color:var(--cp-text-muted);font-size:13px}
+footer{color:var(--cp-text-soft);font-size:12.5px;border-top:1px solid var(--cp-border);margin-top:40px;padding-top:16px}
+.muted{color:var(--cp-text-muted)}
+
+.hero{padding:44px 0 8px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+a.tile{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--cp-text)}
+a.tile:hover{border-color:var(--cp-accent)}
+a.tile:hover .go{color:var(--cp-accent-hover)}
+a.tile:focus-visible{outline:2px solid var(--cp-accent);outline-offset:2px}
+.tile .kind{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cp-text-muted)}
+.tile h3{font-size:19px;margin:0}
+.tile p{margin:0;color:var(--cp-text-muted)}
+.tile .go{margin-top:auto;padding-top:6px;font-weight:600;color:var(--cp-accent)}
+.tile.primary{border-left:4px solid var(--cp-accent)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;color:var(--cp-text-muted);font-size:14px}
+.facts b{color:var(--cp-text)}
+</style></head><body><header class="top"><div class="topin"><div class="brand">Agents SDK &times; SharePoint</div><nav class="sections"></nav><button class="iconbtn" id="themeToggle" title="Toggle light/dark">&#9680; Theme</button></div></header><main><section class="hero"><div class="eyebrow">Copilot Studio &times; SharePoint &middot; validated 7 Oct 2026</div><h1>Authenticated Copilot Studio agents on any SharePoint site</h1><p class="lead">How to publish a Copilot Studio agent to many SharePoint sites through the <b>Microsoft 365 Agents SDK</b> - one web part for the whole tenant, single sign-on with Microsoft Entra ID and Copilot Studio sharing as the access control - built and tested end to end in a live Microsoft demo tenant, and compared with the SharePoint channel + Agent link pattern.</p><div class="facts"><span><b>12</b> use cases (9 validated)</span><span><b>27</b> test scenarios</span><span><b>16</b> passed in the demo tenant</span><span><b>9</b> to validate in your tenant</span><span>Web part <b>1.0.3.0</b></span></div><div class="cards"><a class="card tile primary" href="Agents-SDK-SharePoint-Tutorial-and-Test-Scenarios.html"><span class="kind">Web page</span><h3>Tutorial, use cases and test scenarios</h3><p>Build it in 13 steps with checkpoints and screenshots, see what it enables, and review every test scenario with expected and actual results.</p><span class="go">Open the page &rarr;</span></a><a class="card tile" href="Agents-SDK-SharePoint-Use-Case.html"><span class="kind">Web page</span><h3>Customer pattern: SharePoint channel + Agent link</h3><p>The customer's setup reproduced in the same tenant: what works, the Site A dependency, concerns and recommendations - compared head-to-head with the Agents SDK web part.</p><span class="go">Open the page &rarr;</span></a><a class="card tile" href="Agents-SDK-SharePoint-Test-Plan.xlsx" download><span class="kind">Download</span><h3>Test plan (Excel)</h3><p>All 27 scenarios with preconditions, steps and expected results. Record your own results; the summary sheet counts passes, failures and the P1 pass rate. (24 KB)</p><span class="go">Download &rarr;</span></a><a class="card tile" href="Copilot-Studio-Agents-SDK-SharePoint.pptx" download><span class="kind">Download</span><h3>Presentation (PowerPoint)</h3><p>16 slides: the use case, the answer at a glance, both patterns, test results and recommendations. (1.1 MB)</p><span class="go">Download &rarr;</span></a></div><div class="grid g2" style="margin-top:16px"><div class="card"><h3>Source code and guide</h3><p><a href="https://github.com/patmeh1/copilot-studio-agents-sdk-sharepoint">https://github.com/patmeh1/copilot-studio-agents-sdk-sharepoint</a></p><ul class="checks"><li><a href="https://github.com/patmeh1/copilot-studio-agents-sdk-sharepoint/blob/main/docs/Agents-SDK-SharePoint-Guide.md">Guide</a> - variables, findings, troubleshooting</li><li><a href="https://github.com/patmeh1/copilot-studio-agents-sdk-sharepoint/blob/main/docs/Agents-SDK-SharePoint-Tutorial.md">Tutorial</a> and <a href="https://github.com/patmeh1/copilot-studio-agents-sdk-sharepoint/blob/main/docs/Agents-SDK-SharePoint-Use-Cases-and-Test-Scenarios.md">use cases and test scenarios</a> as markdown</li><li>SPFx web part, setup scripts and the Edge + Playwright test harness</li></ul></div><div class="card"><h3>About the test environment</h3><p>Results come from automated runs in a Microsoft demo tenant with four test users (Microsoft 365 E5, no Copilot licenses, MFA), three SharePoint sites and two agents - one on the standard harness and one on the GitHub Copilot harness. Tenant identifiers are demo values; no credentials are included.</p></div></div><footer>Microsoft 365 Agents SDK in SharePoint &middot; validated 7 Oct 2026. Preview features may change.</footer></section></main><script>document.getElementById("themeToggle").addEventListener("click",function(){var r=document.documentElement;r.setAttribute("data-theme",r.getAttribute("data-theme")==="dark"?"light":"dark");});</script></body></html>

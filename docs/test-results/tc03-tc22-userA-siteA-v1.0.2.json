@@ -1,0 +1,45 @@
+{
+ "persona": "a",
+ "site": "A",
+ "started": "2026-10-07 07:52:29",
+ "access": "ok",
+ "url": "https://m365cpi03719864.sharepoint.com/sites/AgentsSDK-SiteA/SitePages/Agents-SDK-Test.aspx",
+ "tc03_interactive_fallback": {
+  "bundle": [
+   "copilot-studio-agent-web-part_3a20cbdd6d6a4c5f19fd.js"
+  ],
+  "msal_cache_entries_removed": 17,
+  "prompt_shown": true,
+  "prompt": "Agent A - Standard harness Sign in to chat with this agent Single sign-on could not complete silently (for example because third-party cookies are blocked or consent is pending). Sign in with Microsoft Microsoft 365 Agents SDK · Microsoft Entra ID SSO",
+  "popup_host": "about:blank",
+  "popup_steps": [
+   "closed"
+  ],
+  "status": "chat",
+  "greeting": [
+   "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+  ],
+  "reply": [
+   "Agent A (standard harness): Set a clear agenda with desired outcomes and send it before the meeting. Assign a time limit to each topic and end discussion once a decision or next step is captured. This keeps conversations focused and reduces overruns."
+  ],
+  "seconds_to_answer": 21.7,
+  "footer": "Microsoft 365 Agents SDK · Microsoft Entra ID SSO · agentsdk.usera@M365CPI03719864.onmicrosoft.com",
+  "other_web_part": {
+   "still_prompting": true,
+   "first_message": ""
+  },
+  "verdict": "PASS"
+ },
+ "tc22_new_chat": {
+  "question_in_transcript_before": true,
+  "transcript_cleared": true,
+  "greeting_after": [
+   "Hello Agents SDK User A! I'm Agent A - Standard harness. You are signed in with Microsoft Entra ID through the Microsoft 365 Agents SDK. How can I help?"
+  ],
+  "reply_after": [
+   "Agent A (standard harness): Set a clear agenda with desired outcomes and assign time limits to each topic before the meeting starts. If a discussion goes off-topic, capture it in a parking lot and move on so the meeting stays focused and ends on time."
+  ],
+  "verdict": "PASS"
+ },
+ "console": []
+}

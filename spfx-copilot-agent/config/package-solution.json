@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Copilot Studio Agent - Agents SDK web part",
+    "id": "f2ff294f-6d26-4fbe-b24e-f2c550a26297",
+    "version": "1.0.3.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Contoso",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Embed authenticated Copilot Studio agents on any SharePoint site through the Microsoft 365 Agents SDK."
+      },
+      "longDescription": {
+        "default": "Adds the 'Copilot Studio Agent (Agents SDK)' web part. It signs the current user in silently with Microsoft Entra ID (MSAL, SPA app registration with Power Platform API / CopilotStudio.Copilots.Invoke) and talks to the agent through @microsoft/agents-copilotstudio-client rendered with Bot Framework Web Chat. Configure each instance with the agent's Agents SDK connection string."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Copilot Studio Agent - Agents SDK web part",
+        "description": "Deploys the Copilot Studio Agent (Agents SDK) web part.",
+        "id": "fbe6455e-5e13-4915-8429-b392444aa400",
+        "version": "1.0.3.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/copilot-studio-agent-webpart.sppkg"
+  }
+}
