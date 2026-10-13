@@ -64,8 +64,9 @@ def build():
          f'<span><b>{k["notrun"]}</b> to validate in your tenant</span><span>Web part <b>{c.PACKAGE_VERSION}</b></span></div>',
          '<div class="cards">',
          tile("Agents-SDK-SharePoint-Tutorial-and-Test-Scenarios.html", "Web page", "Tutorial, use cases and test scenarios",
-              f"Build it in {sum(len(p['steps']) for p in c.TUTORIAL)} steps with checkpoints and screenshots, see what it enables, and "
-              "review every test scenario with expected and actual results.", "Open the page", primary=True),
+              f"Build it in {sum(len(p['steps']) for p in c.TUTORIAL)} steps with checkpoints and screenshots, follow the PKCE + MSAL "
+              "authentication flow, see what the solution enables, and review every test scenario with expected and actual results.",
+              "Open the page", primary=True),
          tile("Agents-SDK-SharePoint-Use-Case.html", "Web page", "Customer pattern: SharePoint channel + Agent link",
               "The customer's setup reproduced in the same tenant: what works, the Site A dependency, concerns and recommendations - "
               "compared head-to-head with the Agents SDK web part.", "Open the page"),

@@ -11,7 +11,7 @@ without sign-in (screenshot 04 is covered, raw results and test settings omit it
 
 | Start here | |
 |---|---|
-| [Tutorial, use cases and test scenarios (web page)](https://patmeh1.github.io/copilot-studio-agents-sdk-sharepoint/Agents-SDK-SharePoint-Tutorial-and-Test-Scenarios.html) · [file](docs/Agents-SDK-SharePoint-Tutorial-and-Test-Scenarios.html) | Self-contained page: **Agents SDK tutorial, 12 use cases and 27 test scenarios** with expected and actual results |
+| [Tutorial, PKCE/MSAL authentication, use cases and test scenarios (web page)](https://patmeh1.github.io/copilot-studio-agents-sdk-sharepoint/Agents-SDK-SharePoint-Tutorial-and-Test-Scenarios.html) · [file](docs/Agents-SDK-SharePoint-Tutorial-and-Test-Scenarios.html) | Self-contained page: **13-step tutorial, authorization-code-with-PKCE authentication deep dive, 12 use cases and 27 test scenarios** |
 | [docs/Agents-SDK-SharePoint-Tutorial.md](docs/Agents-SDK-SharePoint-Tutorial.md) | Tutorial: 13 steps with checkpoints and screenshots |
 | [docs/Agents-SDK-SharePoint-Use-Cases-and-Test-Scenarios.md](docs/Agents-SDK-SharePoint-Use-Cases-and-Test-Scenarios.md) | Use cases and test scenarios (preconditions, steps, expected result, result in the demo tenant, evidence) |
 | [docs/Agents-SDK-SharePoint-Test-Plan.xlsx](docs/Agents-SDK-SharePoint-Test-Plan.xlsx) | Test plan to run in your tenant - record your results, the summary sheet counts them |

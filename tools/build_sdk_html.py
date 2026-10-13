@@ -144,6 +144,31 @@ tr.open .caret{transform:rotate(90deg)}
 #tutorial figure.shot img{max-height:460px;object-fit:contain}
 .shots figure.wide{grid-column:1/-1}
 .detailgrid .shots{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.auth-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0}
+.auth-compare .card{border-top:4px solid var(--cp-border-strong)}
+.auth-compare .current{border-top-color:var(--cp-success)}
+.auth-compare .deprecated{border-top-color:var(--cp-danger)}
+.auth-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cp-text-muted)}
+.auth-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:16px 0}
+.auth-node{position:relative;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;padding:14px;min-height:114px}
+.auth-node:not(:last-child):after{content:"\\2192";position:absolute;right:-16px;top:42px;color:var(--cp-accent);font-size:20px;font-weight:700;z-index:2}
+.auth-node .n{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:var(--cp-accent);color:var(--cp-accent-fg);font-weight:700;font-size:13px}
+.auth-node b{display:block;margin:8px 0 3px}
+.auth-node span{display:block;color:var(--cp-text-muted);font-size:12.5px}
+.auth-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.auth-step{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px}
+.auth-step .num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--cp-accent);color:var(--cp-accent-fg);font-weight:700}
+.auth-step h3{font-size:15px}
+.auth-step p{margin:5px 0}
+.auth-step .result{color:var(--cp-text-muted);font-size:12.5px}
+.auth-step .result:before{content:"\\2714";color:var(--cp-success);font-weight:700;margin-right:6px}
+.auth-kv td:first-child{width:27%;font-weight:600}
+.auth-kv td:last-child{width:15%;white-space:nowrap}
+.status-ok{color:var(--cp-success);font-weight:700}
+.status-note{color:var(--cp-warning);font-weight:700}
+.verify-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:16px;align-items:start}
+@media(max-width:1050px){.auth-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.auth-node:not(:last-child):after{display:none}.auth-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.auth-compare,.verify-grid,.auth-flow,.auth-steps{grid-template-columns:1fr}}
 """
 
 JS = """
@@ -227,7 +252,45 @@ def build():
     k = c.counts()
     total = len(c.TESTS)
     validated = sum(u["status"] == "validated" for u in c.USE_CASES)
-    nav = [("overview", "Overview"), ("usecases", "Use cases"), ("tutorial", "Tutorial"), ("tests", "Test scenarios"),
+    msal_config = """const pca = new PublicClientApplication({
+  auth: {
+    clientId: "<single-tenant-app-client-id>",
+    authority: "https://login.microsoftonline.com/<tenant-id>",
+    redirectUri: window.location.origin,
+    navigateToLoginRequestUrl: false
+  },
+  cache: {
+    cacheLocation: "localStorage"
+    // Use "sessionStorage" or "memoryStorage" for less persistence.
+  }
+});
+await pca.initialize();"""
+    token_code = """const scopes = [CopilotStudioClient.scopeFromSettings(settings)];
+
+// 1. Cache / refresh token.
+const account = findAccount(pca, sharePointUserUpn);
+if (account) {
+  return await pca.acquireTokenSilent({ scopes, account });
+}
+
+// 2. Existing SharePoint / Entra session (authorization code + PKCE).
+return await pca.ssoSilent({ scopes, loginHint: sharePointUserUpn });
+
+// 3. User-initiated fallback; still authorization code + PKCE.
+return await pca.acquireTokenPopup({ scopes, loginHint: sharePointUserUpn });"""
+    verify_command = """az ad app show --id <app-client-id> --query "{
+  signInAudience: signInAudience,
+  spaRedirectUris: spa.redirectUris,
+  implicitAccessToken: web.implicitGrantSettings.enableAccessTokenIssuance,
+  implicitIdToken: web.implicitGrantSettings.enableIdTokenIssuance
+}" -o json"""
+    verify_output = """{
+  "signInAudience": "AzureADMyOrg",
+  "spaRedirectUris": ["https://<tenant>.sharepoint.com"],
+  "implicitAccessToken": false,
+  "implicitIdToken": false
+}"""
+    nav = [("overview", "Overview"), ("auth", "PKCE & MSAL"), ("usecases", "Use cases"), ("tutorial", "Tutorial"), ("tests", "Test scenarios"),
            ("yourtenant", "Run it in your tenant"), ("limits", "Limits"), ("resources", "Resources")]
     o = ['<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
          '<meta name="robots" content="noindex">',
@@ -267,6 +330,74 @@ def build():
              '<li><b>Microsoft Entra ID</b> - the user is signed in (token for <code>CopilotStudio.Copilots.Invoke</code>).</li>'
              '<li><b>Copilot Studio sharing</b> - the agent is shared with the user or their group.</li>'
              '<li><b>SharePoint permission</b> - the user can open the page (Visitor is enough).</li></ol></div></div></section>')
+
+    # Authentication: authorization code + PKCE through MSAL
+    o.append(f'<section id="auth"><div class="eyebrow">Authentication deep dive &middot; configuration re-verified {c.AUTH_VERIFIED_ON}</div>'
+             '<h2>How this implementation uses authorization code + PKCE</h2>'
+             '<p class="sub">Microsoft deprecated the older <b>implicit grant</b>, not the SPA application type. This web part uses '
+             '<b>MSAL Browser 4.30</b>, which uses the OAuth 2.0 authorization-code flow with Proof Key for Code Exchange (PKCE). '
+             'The deployed Entra app has both implicit-token settings turned off.</p>'
+             '<div class="auth-compare">'
+             '<div class="card deprecated"><div class="auth-label">Deprecated - not used</div><h3>Implicit grant</h3>'
+             '<ul class="limits"><li>Requested tokens directly from the authorization endpoint.</li>'
+             '<li>Returned tokens in the browser URL fragment.</li><li>No PKCE binding for the authorization response.</li>'
+             '<li>Implicit access-token and ID-token issuance are <b>disabled</b> on our app registration.</li></ul></div>'
+             '<div class="card current"><div class="auth-label">Current Microsoft model - used here</div><h3>SPA + authorization code + PKCE</h3>'
+             '<ul class="checks"><li>MSAL requests a short-lived authorization code.</li><li>A one-time PKCE verifier binds the code to the browser request.</li>'
+             '<li>MSAL redeems the code at the token endpoint and manages renewal.</li><li>No client secret is placed in SharePoint or JavaScript.</li></ul></div>'
+             '</div>'
+             '<div class="callout ok"><b>What we verified:</b> the actual demo-tenant app is single-tenant, has one SPA redirect URI at the '
+             'SharePoint origin, has delegated <code>CopilotStudio.Copilots.Invoke</code>, and reports '
+             '<code>enableAccessTokenIssuance: false</code> plus <code>enableIdTokenIssuance: false</code>.</div>'
+             '<h3 class="part"><span class="tag">Flow</span>From the SharePoint page to the agent</h3>'
+             '<div class="auth-flow">'
+             '<div class="auth-node"><span class="n">1</span><b>SharePoint + SPFx</b><span>Loads the web part with the signed-in user and agent connection string.</span></div>'
+             '<div class="auth-node"><span class="n">2</span><b>MSAL + PKCE</b><span>Requests an authorization code silently, with a one-time code challenge.</span></div>'
+             '<div class="auth-node"><span class="n">3</span><b>Microsoft Entra ID</b><span>Reuses the existing session, validates policy and returns the code.</span></div>'
+             '<div class="auth-node"><span class="n">4</span><b>Power Platform token</b><span>MSAL redeems the code and receives a delegated user token.</span></div>'
+             '<div class="auth-node"><span class="n">5</span><b>Copilot Studio</b><span>Validates identity and agent sharing, then streams the conversation to Web Chat.</span></div>'
+             '</div>'
+             '<h3 class="part"><span class="tag">Step by step</span>What the code does</h3>'
+             '<div class="auth-steps">' +
+             "".join(f'<div class="card auth-step"><span class="num">{i}</span><div><h3>{html.escape(st["title"])}</h3>'
+                     f'<p>{md(st["body"])}</p><p class="result">{md(st["result"])}</p></div></div>'
+                     for i, st in enumerate(c.AUTH_STEPS, 1)) +
+             '</div>'
+             '<h3 class="part"><span class="tag">Configuration</span>Verified Entra settings</h3>'
+             '<div class="tablewrap"><table class="auth-kv"><thead><tr><th>Setting</th><th>Value used by this implementation</th><th>Status</th></tr></thead><tbody>' +
+             "".join(f'<tr><td>{html.escape(name)}</td><td>{md(value)}</td><td><span class="{"status-note" if status == "Hardenable" else "status-ok"}">'
+                     f'{"Optional hardening" if status == "Hardenable" else status}</span></td></tr>'
+                     for name, value, status in c.AUTH_CONFIG) +
+             '</tbody></table></div>'
+             '<h3 class="part"><span class="tag">Code path</span>MSAL configuration and token acquisition</h3>'
+             '<div class="verify-grid"><div class="card"><h3>Public-client configuration</h3>'
+             '<p class="small muted">A browser SPA has a client ID and redirect URI, but no client secret.</p>' +
+             code_block(msal_config) +
+             '</div><div class="card"><h3>Silent first, interactive only when required</h3>'
+             '<p class="small muted">All three MSAL APIs below use authorization code + PKCE in MSAL Browser 4.</p>' +
+             code_block(token_code) +
+             '</div></div>'
+             '<h3 class="part"><span class="tag">Verify</span>How to confirm implicit grant is disabled</h3>'
+             '<div class="verify-grid"><div class="card"><h3>Portal checks</h3><ol class="steps">'
+             '<li>Entra admin center &gt; <b>App registrations</b> &gt; your app &gt; <b>Authentication</b>.</li>'
+             '<li>Confirm the redirect URI is under <b>Single-page application</b>.</li>'
+             '<li>Under <b>Implicit grant and hybrid flows</b>, leave both token checkboxes clear.</li>'
+             '<li>Under <b>API permissions</b>, confirm delegated <b>Power Platform API / CopilotStudio.Copilots.Invoke</b>.</li>'
+             '<li>Confirm <b>Supported account types</b> is your organization only.</li></ol></div>'
+             '<div class="card"><h3>Azure CLI check</h3>' + code_block(verify_command) +
+             '<p class="small muted">Expected shape:</p>' + code_block(verify_output) + '</div></div>'
+             '<div class="grid g2" style="margin-top:16px"><div class="card"><h3>Current cache and hardening choice</h3>'
+             '<p>The tested package uses <code>localStorage</code> so several web parts and browser tabs can reuse the account. MSAL Browser 4 '
+             'encrypts local-storage artifacts while the browser session exists, but Microsoft states that cache encryption is not a replacement '
+             'for XSS prevention.</p><p>Where policy requires less persistence, change the MSAL cache to <code>sessionStorage</code> '
+             '(Microsoft default) or <code>memoryStorage</code> (strongest isolation, but sign-in state is lost on refresh).</p></div>'
+             '<div class="card"><h3>Microsoft references</h3><ul class="checks">'
+             '<li><a href="https://learn.microsoft.com/entra/identity-platform/v2-app-types#single-page-apps">Supported SPA application type</a></li>'
+             '<li><a href="https://learn.microsoft.com/entra/identity-platform/msal-authentication-flows">MSAL flows: use authorization code + PKCE; do not use implicit grant</a></li>'
+             '<li><a href="https://learn.microsoft.com/entra/identity-platform/migrate-spa-implicit-to-auth-code">Migrate implicit grant to authorization code + PKCE</a></li>'
+             '<li><a href="https://learn.microsoft.com/entra/msal/javascript/browser/caching">MSAL Browser cache and security guidance</a></li>'
+             '<li><a href="https://learn.microsoft.com/microsoft-copilot-studio/publication-integrate-web-or-native-app-m365-agents-sdk">Copilot Studio integration with Microsoft 365 Agents SDK</a></li>'
+             '</ul></div></div></section>')
 
     # Use cases
     o.append('<section id="usecases"><div class="eyebrow">Use cases</div><h2>What the Agents SDK web part enables</h2>'

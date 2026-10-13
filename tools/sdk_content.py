@@ -15,6 +15,68 @@ SITE_URL = os.environ.get("SITE_URL", "https://patmeh1.github.io/copilot-studio-
 TESTED_ON = "7 Oct 2026"
 PACKAGE_VERSION = "1.0.3.0"
 STACK = "SPFx 1.21.1, `@microsoft/agents-copilotstudio-client` 1.9.1, MSAL.js 4.30, Bot Framework Web Chat 4.19.1"
+AUTH_VERIFIED_ON = "13 Oct 2026"
+
+AUTH_CONFIG = [
+    ("Application type", "Single-page application (public client)", "Supported"),
+    ("OAuth flow", "Authorization code with Proof Key for Code Exchange (PKCE)", "Supported"),
+    ("Implicit access-token issuance", "Disabled (`enableAccessTokenIssuance: false`)", "Verified"),
+    ("Implicit ID-token issuance", "Disabled (`enableIdTokenIssuance: false`)", "Verified"),
+    ("Sign-in audience", "Single tenant (`AzureADMyOrg`)", "Verified"),
+    ("SPA redirect URI", "`https://<tenant>.sharepoint.com`", "Verified"),
+    ("Copilot Studio permission", "Power Platform API / `CopilotStudio.Copilots.Invoke` (delegated)", "Verified"),
+    ("Client credential", "None - a browser public client must not contain a secret", "Verified"),
+    ("Authentication library", "MSAL Browser 4.30 (`PublicClientApplication`)", "Verified"),
+    ("Current token cache", "`localStorage`; use `sessionStorage` or `memoryStorage` if policy requires less persistence", "Hardenable"),
+]
+
+AUTH_STEPS = [
+    {
+        "title": "SharePoint loads the tenant-wide SPFx web part",
+        "body": "The page supplies the current tenant, signed-in SharePoint user and the agent's Microsoft 365 Agents SDK connection string.",
+        "result": "No Copilot Studio credential or secret is stored in the page configuration.",
+    },
+    {
+        "title": "The web part initializes MSAL as a public client",
+        "body": "MSAL receives the single-tenant client ID, tenant authority and the SharePoint origin as its SPA redirect URI. A public client has no client secret.",
+        "result": "Microsoft Entra ID recognizes the request as a browser SPA request.",
+    },
+    {
+        "title": "MSAL first checks its token cache",
+        "body": "`acquireTokenSilent` looks for the correct account (matched to the SharePoint UPN) and a usable delegated token.",
+        "result": "A valid cached token avoids another round trip and no user interface appears.",
+    },
+    {
+        "title": "MSAL reuses the existing Entra session",
+        "body": "If the cache has no usable token, `ssoSilent` starts an authorization-code request in a hidden frame with `login_hint` set to the SharePoint user.",
+        "result": "The existing SharePoint / Entra session normally satisfies sign-in and MFA without another prompt.",
+    },
+    {
+        "title": "PKCE binds the authorization code to this browser request",
+        "body": "MSAL creates a one-time code verifier and sends its derived challenge to Microsoft Entra ID. The returned authorization code can only be redeemed with that verifier.",
+        "result": "A stolen authorization code cannot be redeemed by a different client.",
+    },
+    {
+        "title": "MSAL redeems the code for a delegated Power Platform token",
+        "body": "MSAL calls the Microsoft identity platform token endpoint and requests the scope derived from the connection string (for example `https://api.powerplatform.com/.default`).",
+        "result": "The token represents the signed-in user and contains the consented `CopilotStudio.Copilots.Invoke` permission.",
+    },
+    {
+        "title": "The Copilot Studio client starts the conversation",
+        "body": "The web part gives the access token and connection settings to `CopilotStudioClient`, then bridges its activity stream to Bot Framework Web Chat.",
+        "result": "The token is sent only to the Power Platform / Copilot Studio endpoint.",
+    },
+    {
+        "title": "Copilot Studio checks both identity and sharing",
+        "body": "Copilot Studio validates the token, identifies the user and enforces whether the agent is shared with that user or one of their groups.",
+        "result": "Shared users chat; unshared users receive the agent's access-denied response.",
+    },
+    {
+        "title": "Interactive fallback uses the same secure flow",
+        "body": "If silent sign-in is blocked by browser privacy controls or Conditional Access, the user selects **Sign in with Microsoft**. `acquireTokenPopup` still uses authorization code + PKCE.",
+        "result": "The popup does not switch to implicit grant. One completed sign-in reconnects the other agent web parts on the page.",
+    },
+]
 
 
 def _load(name):
